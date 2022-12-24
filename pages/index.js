@@ -1,8 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-export async function getServerSideProps() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+export async function getStaticProps() {
+  const res = await fetch(
+    "https://next-serverless-complexlity.vercel.app/api/hello"
+  );
   const data = await res.json();
   return {
     props: {
@@ -24,7 +26,7 @@ export default function Home({ data }) {
       </Head>
       <main className={styles.main}>
         <div className={styles.center}>
-          <h1>HELLO {data[0].name}</h1>
+          <h1>HELLO {data.name}</h1>
         </div>
       </main>
     </>
